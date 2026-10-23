@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import CustomCursor from "./components/CustomCursor";
-import Terminal from "./components/Terminal";
 
 export const metadata: Metadata = {
-  title: "Rahul Chandra | AI & Robotics Engineer",
+  title: "Rahul Chandra — Software Engineer · AI & Cloud Developer",
   description:
-    "Portfolio of Rahul Chandra Padamuttam. Engineering advanced bipedal robots, machine learning pipelines, and autonomous observability systems.",
-  keywords: ["AI Engineer", "Robotics", "Machine Learning", "Next.js", "Computer Vision", "OmniSRE", "Portfolio"],
+    "Portfolio of Rahul Chandra Padamuttam. Software Engineer & AI/Cloud Developer. Certified in Oracle Cloud Infrastructure (OCI) and Google Gemini.",
+  keywords: [
+    "Rahul Chandra",
+    "Software Engineer",
+    "AI Developer",
+    "Cloud Engineer",
+    "Oracle Cloud Infrastructure",
+    "Google Gemini",
+    "Machine Learning",
+    "Next.js",
+    "Portfolio",
+  ],
   authors: [{ name: "Rahul Chandra Padamuttam" }],
   openGraph: {
-    title: "Rahul Chandra | AI & Robotics",
-    description: "Building systems that live at the intersection of Hardware, AI, and Software Engineering.",
+    title: "Rahul Chandra — Software Engineer · AI & Cloud Developer",
+    description: "Building production full-stack systems, deep learning pipelines, and cloud architectures end to end.",
     type: "website",
   },
 };
@@ -27,13 +35,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-background text-light-text antialiased" style={{ backgroundColor: "#0c0c0e" }}>
-        <CustomCursor />
-        <Terminal />
+      <body className="bg-[#050505] text-white antialiased">
         {children}
       </body>
     </html>

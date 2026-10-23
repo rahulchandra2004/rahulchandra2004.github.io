@@ -1,50 +1,49 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
-import ScrollyCanvas from "./components/ScrollyCanvas";
+import HeroSection from "./components/HeroSection";
 import Mantra from "./components/Mantra";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Communities from "./components/Communities";
-import Projects from "./components/Projects";
-import Education from "./components/Education";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import ResumeButton from "./components/ResumeButton";
+import IntroSection from "./components/IntroSection";
+import ExperienceSection from "./components/ExperienceSection";
+import HackathonsSection from "./components/HackathonsSection";
+import ServicesSection from "./components/ServicesSection";
+import SelectedWorkSection from "./components/SelectedWorkSection";
+import CredentialsSection from "./components/CredentialsSection";
+import ContactFooterSection from "./components/ContactFooterSection";
 
 export default function Home() {
+  const [preloadDone, setPreloadDone] = useState(false);
+
+  // Safety fallback: reveal full page after 5.5s if preloader animation is interrupted
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPreloadDone(true);
+    }, 5500);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <main className="relative" style={{ backgroundColor: "#0c0c0e" }}>
-      {/* Fixed floating nav */}
-      <Navbar />
+    <main className="bg-[#050505] min-h-screen text-white relative selection:bg-white/20 selection:text-white">
+      {/* Sticky Top Navbar: hidden until image loads and PORTFOLIO moves down */}
+      <Navbar visible={preloadDone} />
 
-      {/* ── Hero Scrollytelling Section (400vh) ────────────────── */}
-      <ScrollyCanvas />
+      {/* Hero & Preloader */}
+      <HeroSection onPreloadComplete={() => setPreloadDone(true)} />
 
-      {/* ── Mantra Section ─────────────────────────────────────── */}
-      <Mantra />
-
-      {/* ── About & Technical Skills ───────────────────────────── */}
-      <About />
-
-      {/* ── Experience Timeline ────────────────────────────────── */}
-      <Experience />
-
-      {/* ── Communities & Open Source ──────────────────────────── */}
-      <Communities />
-
-      {/* ── Projects Grid ──────────────────────────────────────── */}
-      <Projects />
-
-      {/* ── Education & Certifications ─────────────────────────── */}
-      <Education />
-
-      {/* ── Contact Form ───────────────────────────────────────── */}
-      <Contact />
-
-      {/* ── Footer ────────────────────────────────────────────── */}
-      <Footer />
-
-      {/* ── Floating Resume Button ────────────────────────────── */}
-      <ResumeButton />
+      {/* Main Content Sections */}
+      {preloadDone && (
+        <div className="animate-fade-in-up">
+          <Mantra />
+          <IntroSection />
+          <ExperienceSection />
+          <HackathonsSection />
+          <ServicesSection />
+          <SelectedWorkSection />
+          <CredentialsSection />
+          <ContactFooterSection />
+        </div>
+      )}
     </main>
   );
 }

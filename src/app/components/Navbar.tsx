@@ -1,157 +1,240 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { portfolioData } from "@/data/portfolioData";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Hackathons", href: "#community" },
-  { label: "Work", href: "#work" },
-  { label: "Education", href: "#education" },
+const navItems = [
+  "Home",
+  "About",
+  "Experience",
+  "Hackathons",
+  "Service",
+  "Project",
+  "Credentials",
+  "Contact",
 ];
 
-export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+interface NavbarProps {
+  visible?: boolean;
+}
 
+export default function Navbar({ visible = true }: NavbarProps) {
+  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("home");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const tickingRef = useRef(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Scroll tracking and progress indicator
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      setScrolled(scrollY > 24);
+      setScrollProgress(maxScroll > 0 ? Math.min(scrollY / maxScroll, 1) : 0);
+      tickingRef.current = false;
+    };
+
+    const onScroll = () => {
+      if (!tickingRef.current) {
+        tickingRef.current = true;
+        window.requestAnimationFrame(handleScroll);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // IntersectionObserver for active link state
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.toLowerCase()))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, []);
+
+  // Prevent background scroll when mobile menu is open
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [mobileMenuOpen]);
+
+  // Escape key handler
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mobileMenuOpen]);
+
+  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    closeMobileMenu();
+    setActiveSection(id);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <>
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
-        className="fixed top-0 left-0 right-0 z-50 px-6 py-5"
+      <nav
+        aria-label="Main"
+        className={`fixed top-0 left-0 w-full z-[100] transition-[transform,opacity,background-color,border-color,backdrop-filter] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          visible
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "-translate-y-full opacity-0 pointer-events-none"
+        } ${
+          mobileMenuOpen || scrolled
+            ? "bg-[#050505]/90 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.7)]"
+            : "bg-transparent border-b border-transparent"
+        }`}
       >
-        <nav
-          className="max-w-7xl mx-auto flex items-center justify-between"
-        >
-          {/* Logo / Name */}
-          <motion.a
-            href="/"
-            className="font-bold text-white tracking-tight"
-            style={{ fontSize: "1.05rem" }}
-            whileHover={{ opacity: 0.7 }}
-            transition={{ duration: 0.2 }}
+        <div className="flex items-center justify-between px-6 py-4 md:px-12 md:py-5 max-w-7xl mx-auto w-full">
+          {/* Logo Wordmark matching Image 3 */}
+          <a
+            href="#home"
+            aria-label={portfolioData.name}
+            onClick={(e) => handleNavClick(e, "home")}
+            className="group relative z-50 text-white font-black text-lg md:text-xl tracking-[0.18em] uppercase leading-none rounded-sm outline-none transition-colors duration-200 hover:text-gray-200"
           >
-            Rahul Chandra<span style={{ color: "var(--accent)" }}>.</span>
-          </motion.a>
+            <span>RAHUL CHANDRA</span>
+          </a>
 
-          {/* Desktop nav links */}
-          <div
-            className="hidden md:flex items-center gap-1 rounded-full px-3 py-2"
-            style={{
-              background: scrolled ? "rgba(12,12,14,0.8)" : "transparent",
-              backdropFilter: scrolled ? "blur(20px)" : "none",
-              border: scrolled ? "1px solid rgba(255,255,255,0.07)" : "1px solid transparent",
-              transition: "all 0.4s ease",
-            }}
-          >
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.label}
-                href={link.href}
-                className="relative px-4 py-2 text-sm font-medium rounded-full"
-                style={{ color: "rgba(255,255,255,0.6)" }}
-                whileHover={{ color: "#ffffff" }}
-                transition={{ duration: 0.2 }}
-              >
-                {link.label}
-              </motion.a>
-            ))}
-          </div>
+          {/* Desktop Nav Links matching Image 3 */}
+          <ul className="hidden md:flex items-center gap-6 lg:gap-8">
+            {navItems.map((item) => {
+              const id = item.toLowerCase();
+              const isActive = activeSection === id;
+              return (
+                <li key={item}>
+                  <a
+                    href={`#${id}`}
+                    onClick={(e) => handleNavClick(e, id)}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`group relative block py-1 text-xs uppercase tracking-[0.14em] font-medium transition-colors duration-200 rounded-sm outline-none ${
+                      isActive ? "text-[#8ee0c6] font-semibold" : "text-gray-300 hover:text-[#8ee0c6]"
+                    }`}
+                  >
+                    {item}
+                    {/* Active Underline matching user reference */}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-[2px] w-full transition-all duration-300 ${
+                        isActive
+                          ? "scale-x-100 opacity-100 shadow-[0_0_8px_rgba(142,224,198,0.5)]"
+                          : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-60"
+                      }`}
+                      style={{
+                        background: "linear-gradient(90deg, #8ee0c6, #8c82f2)",
+                      }}
+                    />
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
 
-          {/* CTA button */}
-          <div className="hidden md:block">
-            <motion.a
-              href="mailto:rahulpc1981@gmail.com"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-5 py-2.5 rounded-full text-sm font-semibold"
-              style={{
-                background: "rgba(160,240,200,0.1)",
-                border: "1px solid rgba(160,240,200,0.2)",
-                color: "var(--accent)",
-                transition: "all 0.3s ease",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.background = "rgba(160,240,200,0.18)";
-                el.style.boxShadow = "0 0 20px rgba(160,240,200,0.15)";
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLElement;
-                el.style.background = "rgba(160,240,200,0.1)";
-                el.style.boxShadow = "none";
-              }}
-            >
-              Hire me ✦
-            </motion.a>
-          </div>
-
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+            ref={menuButtonRef}
+            type="button"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setMobileMenuOpen((open) => !open)}
+            className="md:hidden relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-sm text-white outline-none focus-visible:ring-2 focus-visible:ring-[#8ee0c6]"
           >
-            <motion.span
-              animate={{ rotate: menuOpen ? 45 : 0, y: menuOpen ? 8 : 0 }}
-              className="block w-6 h-px bg-white origin-center"
-              transition={{ duration: 0.3 }}
+            <span
+              className={`block h-px w-6 bg-current transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                mobileMenuOpen ? "translate-y-[3.5px] rotate-45" : ""
+              }`}
             />
-            <motion.span
-              animate={{ opacity: menuOpen ? 0 : 1 }}
-              className="block w-6 h-px bg-white"
-              transition={{ duration: 0.2 }}
-            />
-            <motion.span
-              animate={{ rotate: menuOpen ? -45 : 0, y: menuOpen ? -8 : 0 }}
-              className="block w-6 h-px bg-white origin-center"
-              transition={{ duration: 0.3 }}
+            <span
+              className={`block h-px w-6 bg-current transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                mobileMenuOpen ? "-translate-y-[3.5px] -rotate-45" : ""
+              }`}
             />
           </button>
-        </nav>
-      </motion.header>
-
-      {/* Mobile drawer */}
-      <motion.div
-        initial={false}
-        animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : -20 }}
-        transition={{ duration: 0.3 }}
-        className="fixed inset-0 z-40 flex flex-col items-center justify-center md:hidden pointer-events-none"
-        style={{
-          background: "rgba(12,12,14,0.97)",
-          backdropFilter: "blur(20px)",
-          pointerEvents: menuOpen ? "all" : "none",
-        }}
-      >
-        <div className="flex flex-col items-center gap-8">
-          {navLinks.map((link, i) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{
-                opacity: menuOpen ? 1 : 0,
-                y: menuOpen ? 0 : 20,
-              }}
-              transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="font-bold text-4xl tracking-tight"
-              style={{ color: "rgba(255,255,255,0.8)" }}
-            >
-              {link.label}
-            </motion.a>
-          ))}
         </div>
-      </motion.div>
+
+        {/* Scroll Progress Bar */}
+        <div
+          aria-hidden="true"
+          className={`h-[2px] w-full origin-left transition-opacity duration-300 ${
+            scrolled ? "opacity-100" : "opacity-0"
+          }`}
+          style={{
+            background: "linear-gradient(90deg, #8ee0c6, #90b8f8, #8c82f2)",
+            transform: `scaleX(${scrollProgress})`,
+          }}
+        />
+      </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        id="mobile-menu"
+        aria-hidden={!mobileMenuOpen}
+        className={`fixed inset-0 z-[95] flex flex-col items-center justify-center bg-[#050505]/95 backdrop-blur-2xl transition-[opacity,visibility] duration-500 ease-out md:hidden ${
+          mobileMenuOpen ? "visible opacity-100" : "invisible opacity-0 pointer-events-none"
+        }`}
+      >
+        <ul className="flex flex-col items-center gap-7">
+          {navItems.map((item, idx) => {
+            const id = item.toLowerCase();
+            const isActive = activeSection === id;
+            return (
+              <li
+                key={item}
+                className={`transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  mobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+                }`}
+                style={{ transitionDelay: mobileMenuOpen ? `${120 + idx * 50}ms` : "0ms" }}
+              >
+                <a
+                  href={`#${id}`}
+                  onClick={(e) => handleNavClick(e, id)}
+                  className={`block text-2xl font-bold uppercase tracking-[0.2em] transition-colors duration-200 outline-none ${
+                    isActive ? "text-white underline underline-offset-8" : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  {item}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </>
   );
 }
