@@ -104,7 +104,7 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
             tl.to(
               containerRef.current,
               {
-                top: isMobile ? "22%" : "74%",
+                top: isMobile ? "72%" : "74%",
                 duration: 2.2,
                 ease: "power3.inOut",
               },
@@ -113,14 +113,14 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
 
             tl.fromTo(
               [roleTextRef.current, actionBtnsRef.current],
-              { y: 50, opacity: 0 },
+              { y: 30, opacity: 0 },
               { y: 0, opacity: 1, duration: 1.4, stagger: 0.25, ease: "power3.out" },
               "-=1.2"
             );
 
             tl.call(() => setCanvasPlay(true), undefined, "-=1.5");
 
-            const offset = isMobile ? window.innerWidth * 0.26 : Math.min(360, window.innerWidth * 0.24);
+            const offset = isMobile ? Math.min(32, window.innerWidth * 0.08) : Math.min(360, window.innerWidth * 0.24);
             tl.to(leftHalfRef.current, { x: -offset, duration: 2.2, ease: "power3.out" }, "<");
             tl.to(rightHalfRef.current, { x: offset, duration: 2.2, ease: "power3.out" }, "<");
           });
@@ -137,7 +137,7 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
   }, [scrambleStarted, imgPreloaded]);
 
   const displayHeadingClass =
-    "flex items-baseline text-[16vw] md:text-[10rem] lg:text-[14rem] font-black tracking-tighter drop-shadow-2xl leading-none uppercase select-none";
+    "flex items-baseline text-[14vw] sm:text-[16vw] md:text-[10rem] lg:text-[14rem] font-black tracking-tighter drop-shadow-2xl leading-none uppercase select-none";
   const metallicGradientClass =
     "text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-300 to-gray-800";
 
@@ -153,25 +153,25 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
       {/* Main Big Center Display Text */}
       <div
         ref={containerRef}
-        className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none flex flex-col items-start w-max"
+        className="absolute top-[50%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none select-none flex flex-col items-center md:items-start w-full md:w-max px-4 md:px-0 max-w-[100vw]"
       >
         <h1
           ref={headingRef}
-          className={`${displayHeadingClass} ${metallicGradientClass} transition-opacity duration-300 ${
+          className={`${displayHeadingClass} ${metallicGradientClass} w-full flex justify-center items-baseline transition-opacity duration-300 ${
             scrambleStarted ? "opacity-100" : "opacity-0"
           }`}
         >
-          <span ref={leftHalfRef} className="inline-block">
+          <span ref={leftHalfRef} className="inline-block text-right">
             {displayText.slice(0, 4)}
           </span>
-          <span ref={rightHalfRef} className="inline-block">
+          <span ref={rightHalfRef} className="inline-block text-left">
             {displayText.slice(4)}
           </span>
         </h1>
 
         {/* Initial wordmark overlay before scramble */}
         {initialOverlayVisible && (
-          <div className="absolute top-0 left-0 transition-opacity duration-300 opacity-100">
+          <div className="absolute top-0 left-0 w-full flex justify-center md:justify-start transition-opacity duration-300 opacity-100">
             <div className={`${displayHeadingClass} ${metallicGradientClass}`}>
               {portfolioData.wordmark}
             </div>
@@ -181,12 +181,12 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
         {/* Subtitle / Role Tag */}
         <div
           ref={roleTextRef}
-          className="absolute -bottom-8 left-1/2 -translate-x-1/2 md:translate-x-0 md:-bottom-12 md:left-8 flex items-center gap-2 md:gap-3 z-10 opacity-0 w-max pointer-events-auto select-none"
+          className="relative md:absolute mt-3 md:mt-0 md:-bottom-12 md:left-8 flex flex-col sm:flex-row items-center justify-center gap-2 md:gap-3 z-10 opacity-0 w-full md:w-max pointer-events-auto select-none"
         >
-          <span className="font-bold text-white text-base md:text-2xl lg:text-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+          <span className="font-bold text-white text-base md:text-2xl lg:text-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] text-center">
             {portfolioData.role.bold}
           </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-black/80 backdrop-blur-md border border-white/15 text-[#cfc9bc] font-semibold text-xs md:text-base lg:text-lg tracking-wide shadow-[0_4px_25px_rgba(0,0,0,0.85)]">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-black/80 backdrop-blur-md border border-white/15 text-[#cfc9bc] font-semibold text-xs md:text-base lg:text-lg tracking-wide shadow-[0_4px_25px_rgba(0,0,0,0.85)] whitespace-nowrap">
             <span className="w-1.5 h-1.5 rounded-full bg-[#c85635]" />
             {portfolioData.role.light}
           </span>
@@ -195,7 +195,7 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
         {/* Action Button */}
         <div
           ref={actionBtnsRef}
-          className="absolute -bottom-20 left-1/2 -translate-x-1/2 md:translate-x-0 md:-bottom-12 md:left-auto md:right-16 flex items-center gap-2 md:gap-4 pointer-events-auto z-10 opacity-0 w-max"
+          className="relative md:absolute mt-3 md:mt-0 md:-bottom-12 md:left-auto md:right-16 flex items-center justify-center gap-2 md:gap-4 pointer-events-auto z-10 opacity-0 w-full md:w-max"
         >
           <a
             href="#contact"
@@ -224,13 +224,13 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
       </div>
 
       {/* Sizing Anchor Mask Image (invisible - WebGL canvas draws the pixel mosaic) */}
-      <div className="absolute inset-x-0 top-[28vh] md:top-[2vh] z-10 text-center text-white flex flex-col items-center w-full pointer-events-none">
+      <div className="absolute inset-x-0 top-[8vh] md:top-[2vh] z-10 text-center text-white flex flex-col items-center w-full pointer-events-none">
         <img
           ref={anchorImgRef}
           src={heroMaskImg}
           alt=""
           aria-hidden="true"
-          className="invisible w-auto max-w-none h-[110vh] md:h-[143vh]"
+          className="invisible w-auto max-w-none h-[100vh] md:h-[143vh]"
         />
       </div>
 
