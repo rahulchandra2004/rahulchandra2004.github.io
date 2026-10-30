@@ -16,7 +16,8 @@ export default function ContactFooterSection() {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const sec = sectionRef.current;
@@ -45,23 +46,48 @@ export default function ContactFooterSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
 
     setStatus("sending");
+    setErrorMessage("");
 
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name}`);
-    const body = encodeURIComponent(
-      `Hi Rahul,\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`
-    );
-    window.open(`mailto:${portfolioData.email}?subject=${subject}&body=${body}`, "_blank");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: portfolioData.web3FormsAccessKey || "00c42e9b-d41f-49a8-af4b-5d00cad1b40b",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Inquiry from ${formData.name}`,
+          from_name: formData.name,
+        }),
+      });
 
-    setTimeout(() => {
-      setStatus("sent");
-      setFormData({ name: "", email: "", message: "" });
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus("sent");
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 6000);
+      } else {
+        console.error("Web3Forms error:", data);
+        setStatus("error");
+        setErrorMessage(data.message || "Failed to send message. Please try again.");
+        setTimeout(() => setStatus("idle"), 6000);
+      }
+    } catch (error) {
+      console.error("Submission failed:", error);
+      setStatus("error");
+      setErrorMessage("Network error. Please try again or email directly.");
       setTimeout(() => setStatus("idle"), 6000);
-    }, 600);
+    }
   };
 
   return (
@@ -258,7 +284,13 @@ export default function ContactFooterSection() {
 
                   {status === "sent" && (
                     <span className="text-[#c85635] text-sm font-medium animate-fade-in-up">
-                      Message sent successfully.
+                      Message sent successfully!
+                    </span>
+                  )}
+
+                  {status === "error" && (
+                    <span className="text-red-400 text-sm font-medium animate-fade-in-up">
+                      {errorMessage || "Failed to send message. Please try again."}
                     </span>
                   )}
                 </div>

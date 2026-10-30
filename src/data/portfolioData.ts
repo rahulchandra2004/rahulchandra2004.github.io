@@ -86,6 +86,7 @@ export const portfolioData = {
     light: "AI & Cloud Developer",
   },
   email: "rahulpc1981@gmail.com",
+  web3FormsAccessKey: "00c42e9b-d41f-49a8-af4b-5d00cad1b40b",
   phone: "+91 93902 44754",
   location: "MANIT / NIAMT, India",
   url: "https://rahulchandra.vercel.app",
