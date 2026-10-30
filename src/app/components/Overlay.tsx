@@ -45,7 +45,7 @@ function HeroSection({ scrollYProgress }: { scrollYProgress: MotionValue<number>
           Portfolio · 2026
         </motion.p>
 
-        {/* Full name — all bold white */}
+        {/* Full name: all bold white */}
         <h1
           className="font-black leading-[1.0] tracking-tighter mb-5"
           style={{ fontSize: "clamp(3.2rem, 9vw, 9.5rem)", color: "#ffffff" }}

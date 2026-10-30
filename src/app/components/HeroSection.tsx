@@ -179,17 +179,20 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
         )}
 
         {/* Subtitle / Role Tag */}
-        <p
+        <div
           ref={roleTextRef}
-          className="absolute -bottom-8 left-1/2 -translate-x-1/2 md:translate-x-0 md:-bottom-12 md:left-8 text-white text-base md:text-2xl lg:text-3xl drop-shadow-md z-10 opacity-0 w-max pointer-events-auto"
+          className="absolute -bottom-8 left-1/2 -translate-x-1/2 md:translate-x-0 md:-bottom-12 md:left-8 flex items-center gap-2 md:gap-3 z-10 opacity-0 w-max pointer-events-auto select-none"
         >
-          <span className="font-bold">{portfolioData.role.bold}</span>{" "}
-          <span className="font-light italic text-gray-300 font-serif">
+          <span className="font-bold text-white text-base md:text-2xl lg:text-3xl drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
+            {portfolioData.role.bold}
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-black/80 backdrop-blur-md border border-white/15 text-[#cfc9bc] font-semibold text-xs md:text-base lg:text-lg tracking-wide shadow-[0_4px_25px_rgba(0,0,0,0.85)]">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#c85635]" />
             {portfolioData.role.light}
           </span>
-        </p>
+        </div>
 
-        {/* Action Button Pill */}
+        {/* Action Button */}
         <div
           ref={actionBtnsRef}
           className="absolute -bottom-20 left-1/2 -translate-x-1/2 md:translate-x-0 md:-bottom-12 md:left-auto md:right-16 flex items-center gap-2 md:gap-4 pointer-events-auto z-10 opacity-0 w-max"
@@ -197,10 +200,10 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
           <a
             href="#contact"
             aria-label="Go to contact"
-            className="group w-8 h-8 md:w-12 md:h-12 rounded-full border border-[#8ee0c6]/40 flex items-center justify-center backdrop-blur-md bg-black/40 hover:bg-[#8ee0c6]/15 hover:border-[#8ee0c6] shadow-[0_0_15px_rgba(142,224,198,0.2)] transition-all duration-300 cursor-pointer"
+            className="group w-9 h-9 md:w-11 md:h-11 rounded-xl border border-[#c85635]/40 flex items-center justify-center backdrop-blur-md bg-black/50 hover:bg-[#c85635]/20 hover:border-[#c85635] shadow-[0_0_15px_rgba(200,86,53,0.2)] transition-all duration-300 cursor-pointer"
           >
             <svg
-              className="w-3 h-3 md:w-4 md:h-4 text-[#8ee0c6] transition-transform duration-300 group-hover:rotate-45"
+              className="w-3.5 h-3.5 md:w-4 md:h-4 text-[#c85635] transition-transform duration-300 group-hover:rotate-45"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -211,9 +214,9 @@ export default function HeroSection({ onPreloadComplete }: HeroSectionProps) {
           </a>
           <a
             href="#contact"
-            className="px-4 py-1.5 md:px-6 md:py-2.5 rounded-full border border-[#8ee0c6]/40 flex items-center justify-center backdrop-blur-md bg-black/40 hover:bg-[#8ee0c6]/15 hover:border-[#8ee0c6] shadow-[0_0_15px_rgba(142,224,198,0.2)] transition-all cursor-pointer group"
+            className="px-5 py-2 md:px-6 md:py-2.5 rounded-xl border border-[#c85635]/40 flex items-center justify-center backdrop-blur-md bg-black/50 hover:bg-[#c85635] hover:border-[#c85635] shadow-[0_0_15px_rgba(200,86,53,0.2)] transition-all cursor-pointer group"
           >
-            <span className="text-[#8ee0c6] text-xs md:text-base italic font-light font-serif tracking-wider group-hover:text-white transition-colors">
+            <span className="text-[#c85635] text-xs md:text-sm font-semibold tracking-wider uppercase group-hover:text-white transition-colors">
               Contact
             </span>
           </a>

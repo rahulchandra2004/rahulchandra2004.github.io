@@ -12,7 +12,7 @@ export default function Mantra() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-96 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(160,240,200,0.04) 0%, rgba(123,110,246,0.03) 40%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(200,86,53,0.04) 0%, transparent 70%)",
         }}
       />
 
@@ -24,7 +24,7 @@ export default function Mantra() {
         className="relative z-10 text-center flex flex-col items-center max-w-5xl"
       >
         <span className="text-[10px] md:text-[11px] uppercase tracking-[0.35em] text-gray-500 mb-6">
-          Philosophy & Vision
+          Core Engineering Focus
         </span>
 
         {/* Decorative quote mark */}
@@ -33,7 +33,7 @@ export default function Mantra() {
           whileInView={{ opacity: 0.25, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="text-7xl md:text-8xl font-black leading-none mb-4 block text-[var(--accent)] font-serif select-none"
+          className="text-7xl md:text-8xl font-black leading-none mb-4 block text-[#c85635] font-serif select-none"
         >
           &ldquo;
         </motion.span>
@@ -45,39 +45,22 @@ export default function Mantra() {
             color: "#ffffff",
           }}
         >
-          Not your normal{" "}
-          <span
-            className="text-transparent bg-clip-text"
-            style={{
-              backgroundImage: "linear-gradient(135deg, #a0f0c8 0%, #7b6ef6 100%)",
-            }}
-          >
-            AI engineer
+          Software Engineer architecting{" "}
+          <span className="text-[#c85635]">
+            low-latency systems
           </span>
-          {" "}—
+          ,
           <br className="hidden sm:inline" />
-          <span className="text-gray-400 font-light"> I don&apos;t just write code,</span>{" "}
-          <span className="text-white">I engineer</span>
-          <br />
-          <span
-            className="text-transparent bg-clip-text font-black"
-            style={{
-              backgroundImage: "linear-gradient(135deg, #7b6ef6 0%, #a0f0c8 100%)",
-            }}
-          >
-            end-to-end intelligence
-          </span>
-          <br className="hidden sm:inline" />
-          <span className="text-gray-400 font-light"> bridging open-source algorithms</span>{" "}
+          <span className="text-gray-400 font-light"> autonomous humanoid robotics,</span>{" "}
           <span className="text-white">and</span>{" "}
-          <span
-            className="text-transparent bg-clip-text"
-            style={{
-              backgroundImage: "linear-gradient(135deg, #f0d8a0 0%, #f0a0c8 100%)",
-            }}
-          >
-            physical robotics.
+          <span className="text-white font-black">
+            observability infrastructure.
           </span>
+          <br className="hidden sm:inline" />
+          <span className="text-gray-400 font-light"> Engineering resilient solutions from</span>{" "}
+          <span className="text-[#cfc9bc]">hardware kinematics</span>{" "}
+          <span className="text-gray-400 font-light">to</span>{" "}
+          <span className="text-white">cloud scale.</span>
         </p>
 
         <div className="mt-10 flex items-center gap-3">

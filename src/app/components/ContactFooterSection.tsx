@@ -93,10 +93,10 @@ export default function ContactFooterSection() {
           <div className="w-full lg:w-5/12 flex flex-col">
             {/* Available for work badge */}
             <div className="mb-7">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#8ee0c6]/30 bg-[#8ee0c6]/10 backdrop-blur-md px-3.5 py-1.5 text-[10px] md:text-[11px] uppercase tracking-[0.26em] text-[#8ee0c6]">
+              <span className="inline-flex items-center gap-2.5 rounded-xl border border-[#c85635]/30 bg-[#c85635]/10 backdrop-blur-md px-3.5 py-1.5 text-[10px] md:text-[11px] uppercase tracking-[0.26em] text-[#c85635]">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 animate-halo" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-[#c85635] animate-halo" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#c85635]" />
                 </span>
                 Available for work
               </span>
@@ -105,7 +105,7 @@ export default function ContactFooterSection() {
             {/* Heading */}
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter drop-shadow-2xl mb-7 leading-[0.95]">
               <span className="block overflow-hidden pb-[0.08em]">
-                <span className="line block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#8ee0c6]">
+                <span className="line block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-[#c85635]">
                   Get in touch
                 </span>
               </span>
@@ -120,15 +120,12 @@ export default function ContactFooterSection() {
             <div className="flex flex-wrap gap-3 mt-10">
               <a
                 href={`mailto:${portfolioData.email}`}
-                className="group px-7 py-3.5 rounded-full text-black text-sm font-semibold inline-flex items-center gap-2.5 shadow-[0_4px_25px_rgba(142,224,198,0.35)] transition-all duration-300 ease-out hover:brightness-110 hover:scale-[1.02]"
-                style={{
-                  background: "linear-gradient(135deg, #8ee0c6 0%, #90b8f8 50%, #8c82f2 100%)",
-                }}
+                className="group px-7 py-3.5 rounded-xl bg-[#c85635] text-white text-sm font-semibold inline-flex items-center gap-2.5 shadow-[0_4px_20px_rgba(200,86,53,0.25)] transition-all duration-300 ease-out hover:bg-[#b34a2c] hover:scale-[1.02]"
               >
                 <span>Send an email</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-0.5 text-black"
+                  className="w-4 h-4 transition-transform duration-300 ease-out group-hover:translate-x-0.5 text-white"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -147,7 +144,7 @@ export default function ContactFooterSection() {
                 href={portfolioData.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group px-6 py-3.5 rounded-full border border-[#8c82f2]/40 text-white text-sm font-medium inline-flex items-center gap-2.5 backdrop-blur-md transition-all duration-300 ease-out hover:border-[#8c82f2] hover:bg-[#8c82f2]/15 hover:shadow-[0_0_20px_rgba(140,130,242,0.25)]"
+                className="group px-6 py-3.5 rounded-xl border border-[#cfc9bc]/40 text-white text-sm font-medium inline-flex items-center gap-2.5 backdrop-blur-md transition-all duration-300 ease-out hover:border-[#cfc9bc] hover:bg-[#cfc9bc]/10 hover:text-[#cfc9bc]"
               >
                 <span>Connect on LinkedIn</span>
                 <svg
@@ -171,7 +168,7 @@ export default function ContactFooterSection() {
           <div className="w-full lg:w-7/12 flex flex-col items-center">
             <div
               data-contact-card
-              className="w-full rounded-3xl border border-white/10 bg-[#0c0d12]/80 backdrop-blur-2xl p-7 sm:p-10 md:p-12 shadow-[0_24px_70px_-15px_rgba(0,0,0,0.85)]"
+              className="w-full rounded-xl border border-white/10 bg-[#0c0d12]/80 backdrop-blur-2xl p-7 sm:p-10 md:p-12 shadow-[0_24px_70px_-15px_rgba(0,0,0,0.85)]"
             >
               <form onSubmit={handleSubmit} className="flex flex-col">
                 {/* Two Columns: NAME & EMAIL */}
@@ -239,20 +236,17 @@ export default function ContactFooterSection() {
                   <button
                     type="submit"
                     disabled={status === "sending"}
-                    className="group relative px-8 py-3.5 rounded-full text-black font-semibold text-sm md:text-base tracking-wide flex items-center gap-2.5 transition-all duration-300 hover:brightness-110 hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_30px_rgba(142,224,198,0.35)] disabled:opacity-60 cursor-pointer"
-                    style={{
-                      background: "linear-gradient(135deg, #8ee0c6 0%, #90b8f8 50%, #8c82f2 100%)",
-                    }}
+                    className="group relative px-8 py-3.5 rounded-xl bg-[#c85635] text-white font-semibold text-sm md:text-base tracking-wide flex items-center gap-2.5 transition-all duration-300 hover:bg-[#b34a2c] hover:scale-[1.02] active:scale-[0.98] shadow-[0_4px_20px_rgba(200,86,53,0.25)] disabled:opacity-60 cursor-pointer"
                   >
                     <span>
                       {status === "sending"
                         ? "Sending..."
                         : status === "sent"
-                        ? "Message Sent!"
+                        ? "Message Sent"
                         : "Send Message"}
                     </span>
                     <svg
-                      className="w-4 h-4 text-black transition-transform duration-300 group-hover:translate-x-1"
+                      className="w-4 h-4 text-white transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -263,8 +257,8 @@ export default function ContactFooterSection() {
                   </button>
 
                   {status === "sent" && (
-                    <span className="text-emerald-400 text-sm font-medium animate-fade-in-up">
-                      ✓ Message sent! Thank you.
+                    <span className="text-[#c85635] text-sm font-medium animate-fade-in-up">
+                      Message sent successfully.
                     </span>
                   )}
                 </div>
@@ -273,9 +267,9 @@ export default function ContactFooterSection() {
 
             {/* Status Beacon matching Image 2 */}
             <div className="flex justify-center mt-7">
-              <div className="relative flex items-center justify-center w-7 h-7 rounded-full border border-emerald-500/40 bg-emerald-500/10">
-                <span className="absolute w-full h-full rounded-full border border-emerald-400/30 animate-ping opacity-60" />
-                <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+              <div className="relative flex items-center justify-center w-7 h-7 rounded-xl border border-[#c85635]/40 bg-[#c85635]/10">
+                <span className="absolute w-full h-full rounded-xl border border-[#c85635]/30 animate-ping opacity-60" />
+                <span className="w-2 h-2 rounded-full bg-[#c85635] shadow-[0_0_8px_#c85635]" />
               </div>
             </div>
           </div>
@@ -314,11 +308,11 @@ export default function ContactFooterSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download Resume"
-              className="px-5 py-2.5 rounded-full border border-[#8ee0c6]/40 bg-[#8ee0c6]/10 hover:border-[#8ee0c6] hover:bg-[#8ee0c6]/20 text-[#8ee0c6] text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 inline-flex items-center gap-2 group shadow-[0_4px_20px_rgba(142,224,198,0.15)] hover:shadow-[0_4px_25px_rgba(142,224,198,0.3)] cursor-pointer"
+              className="px-5 py-2.5 rounded-xl border border-[#c85635]/40 bg-[#c85635]/10 hover:border-[#c85635] hover:bg-[#c85635]/20 text-[#c85635] text-xs md:text-sm font-semibold tracking-wide transition-all duration-300 inline-flex items-center gap-2 group shadow-[0_4px_20px_rgba(200,86,53,0.15)] hover:shadow-[0_4px_25px_rgba(200,86,53,0.3)] cursor-pointer"
             >
               <span>Resume</span>
               <svg
-                className="w-4 h-4 text-[#8ee0c6] transition-transform duration-300 group-hover:translate-y-0.5"
+                className="w-4 h-4 text-[#c85635] transition-transform duration-300 group-hover:translate-y-0.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

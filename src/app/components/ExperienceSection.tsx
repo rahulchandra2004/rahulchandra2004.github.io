@@ -22,10 +22,10 @@ function ExperienceCard({
       {/* Timeline Node */}
       <div className="flex flex-col items-center flex-shrink-0 pt-1.5">
         <div
-          className="w-3.5 h-3.5 rounded-full z-10 transition-transform duration-300 group-hover:scale-125"
+          className="w-3 h-3 rounded-full z-10 transition-transform duration-300 group-hover:scale-125"
           style={{
             background: exp.accent,
-            boxShadow: `0 0 16px ${exp.accent}80`,
+            boxShadow: `0 0 12px ${exp.accent}60`,
           }}
         />
         {index < portfolioData.experiences.length - 1 && (
@@ -41,7 +41,7 @@ function ExperienceCard({
 
       {/* Card Body */}
       <div
-        className="flex-1 rounded-2xl p-6 md:p-8 mb-6 bg-white/[0.025] backdrop-blur-md border border-white/[0.08] hover:border-white/20 transition-all duration-300 hover:bg-white/[0.04] shadow-[0_8px_30px_rgb(0,0,0,0.15)]"
+        className="flex-1 rounded-xl p-6 md:p-8 mb-6 bg-white/[0.025] backdrop-blur-md border border-white/[0.08] hover:border-white/20 transition-all duration-300 hover:bg-white/[0.04] shadow-[0_8px_30px_rgb(0,0,0,0.15)]"
         onMouseEnter={(e) => {
           (e.currentTarget as HTMLElement).style.borderColor = `${exp.accent}40`;
           (e.currentTarget as HTMLElement).style.boxShadow = `0 12px 40px ${exp.accent}12`;
@@ -55,7 +55,7 @@ function ExperienceCard({
         <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div>
             <span
-              className="text-[11px] uppercase font-semibold tracking-wider px-2.5 py-1 rounded-md mb-2.5 inline-block"
+              className="text-[11px] uppercase font-semibold tracking-wider px-2.5 py-1 rounded-xl mb-2.5 inline-block font-mono"
               style={{ background: `${exp.accent}18`, color: exp.accent }}
             >
               {exp.type}
@@ -68,7 +68,7 @@ function ExperienceCard({
             </p>
           </div>
 
-          <span className="text-xs font-mono px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-gray-400">
+          <span className="text-xs font-mono px-3 py-1.5 rounded-xl bg-white/[0.05] border border-white/10 text-gray-400">
             {exp.period}
           </span>
         </div>
@@ -83,7 +83,7 @@ function ExperienceCard({
           {exp.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-2.5 py-1 rounded-full bg-white/[0.03] border border-white/[0.08] text-gray-300 font-mono"
+              className="text-xs px-2.5 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-gray-300 font-mono"
             >
               {tag}
             </span>
@@ -104,7 +104,7 @@ export default function ExperienceSection() {
       <div
         className="absolute top-1/4 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(160,240,200,0.03) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(200,86,53,0.03) 0%, transparent 70%)",
           transform: "translate(20%, -20%)",
         }}
       />
@@ -120,7 +120,7 @@ export default function ExperienceSection() {
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-300 to-gray-800">
                 Where I&apos;ve{" "}
               </span>
-              <span className="font-light italic text-gray-300 font-serif lowercase">
+              <span className="font-light italic text-[#c85635] font-serif lowercase">
                 worked
               </span>
             </h2>

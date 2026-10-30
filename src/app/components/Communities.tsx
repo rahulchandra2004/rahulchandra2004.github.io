@@ -20,7 +20,7 @@ const hackathons = [
       { label: "Read Article", href: "https://dev.to/rahulchandra2004/omnisre-closed-loop-ai-observability-and-autonomous-self-healing-1lf4" },
       { label: "Hackathon Page", href: "https://archive.wemakedevs.org/hackathons/signoz/" },
     ],
-    badge: "🔥 Global Hackathon",
+    badge: "Global Hackathon",
     highlight: true,
   },
   {
@@ -235,7 +235,7 @@ export default function Communities() {
             </h2>
             <p className="max-w-xs text-sm leading-relaxed lg:text-right lg:pb-3"
               style={{ color: "rgba(255,255,255,0.35)" }}>
-              Competing, building, and shipping under pressure — hackathons where ideas become prototypes in days.
+              Competing, building, and shipping under pressure, hackathons where ideas become prototypes in days.
             </p>
           </div>
           <div className="mt-10 h-px w-full"

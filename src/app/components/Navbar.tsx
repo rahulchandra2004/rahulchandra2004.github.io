@@ -127,7 +127,7 @@ export default function Navbar({ visible = true }: NavbarProps) {
             href="#home"
             aria-label={portfolioData.name}
             onClick={(e) => handleNavClick(e, "home")}
-            className="group relative z-50 text-white font-black text-lg md:text-xl tracking-[0.18em] uppercase leading-none rounded-sm outline-none transition-colors duration-200 hover:text-gray-200"
+            className="group relative z-50 text-white font-black text-lg md:text-xl tracking-[0.18em] uppercase leading-none rounded-xl outline-none transition-colors duration-200 hover:text-gray-200"
           >
             <span>RAHUL CHANDRA</span>
           </a>
@@ -143,8 +143,8 @@ export default function Navbar({ visible = true }: NavbarProps) {
                     href={`#${id}`}
                     onClick={(e) => handleNavClick(e, id)}
                     aria-current={isActive ? "true" : undefined}
-                    className={`group relative block py-1 text-xs uppercase tracking-[0.14em] font-medium transition-colors duration-200 rounded-sm outline-none ${
-                      isActive ? "text-[#8ee0c6] font-semibold" : "text-gray-300 hover:text-[#8ee0c6]"
+                    className={`group relative block py-1 text-xs uppercase tracking-[0.14em] font-medium transition-colors duration-200 rounded-xl outline-none ${
+                      isActive ? "text-[#c85635] font-semibold" : "text-gray-300 hover:text-[#c85635]"
                     }`}
                   >
                     {item}
@@ -152,11 +152,11 @@ export default function Navbar({ visible = true }: NavbarProps) {
                     <span
                       className={`absolute -bottom-1 left-0 h-[2px] w-full transition-all duration-300 ${
                         isActive
-                          ? "scale-x-100 opacity-100 shadow-[0_0_8px_rgba(142,224,198,0.5)]"
+                          ? "scale-x-100 opacity-100 shadow-[0_0_8px_rgba(200,86,53,0.5)]"
                           : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-60"
                       }`}
                       style={{
-                        background: "linear-gradient(90deg, #8ee0c6, #8c82f2)",
+                        background: "#c85635",
                       }}
                     />
                   </a>
@@ -173,7 +173,7 @@ export default function Navbar({ visible = true }: NavbarProps) {
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
             onClick={() => setMobileMenuOpen((open) => !open)}
-            className="md:hidden relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-sm text-white outline-none focus-visible:ring-2 focus-visible:ring-[#8ee0c6]"
+            className="md:hidden relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-xl text-white outline-none focus-visible:ring-2 focus-visible:ring-[#c85635]"
           >
             <span
               className={`block h-px w-6 bg-current transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -195,7 +195,7 @@ export default function Navbar({ visible = true }: NavbarProps) {
             scrolled ? "opacity-100" : "opacity-0"
           }`}
           style={{
-            background: "linear-gradient(90deg, #8ee0c6, #90b8f8, #8c82f2)",
+            background: "#c85635",
             transform: `scaleX(${scrollProgress})`,
           }}
         />

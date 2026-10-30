@@ -18,7 +18,7 @@ function HackathonCard({
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.8, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
       whileHover={{ y: -6 }}
-      className="relative rounded-2xl overflow-hidden flex flex-col bg-white/[0.025] backdrop-blur-md border border-white/[0.08] hover:border-white/20 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.15)] group"
+      className="relative rounded-xl overflow-hidden flex flex-col bg-white/[0.025] backdrop-blur-md border border-white/[0.08] hover:border-white/20 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.15)] group"
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = `${hackathon.accent}45`;
         (e.currentTarget as HTMLElement).style.boxShadow = `0 20px 60px ${hackathon.accent}15`;
@@ -41,7 +41,7 @@ function HackathonCard({
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
           <div className="flex items-center gap-2.5">
             <span
-              className="text-xs uppercase font-semibold tracking-wider px-3 py-1 rounded-full flex items-center gap-1.5"
+              className="text-xs uppercase font-semibold tracking-wider px-3 py-1 rounded-xl flex items-center gap-1.5"
               style={{ background: `${hackathon.accent}18`, color: hackathon.accent }}
             >
               {hackathon.highlight ? (
@@ -61,7 +61,7 @@ function HackathonCard({
             </span>
           </div>
 
-          <span className="text-xs font-mono px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-gray-400">
+          <span className="text-xs font-mono px-3 py-1 rounded-xl bg-white/[0.05] border border-white/10 text-gray-400">
             {hackathon.period}
           </span>
         </div>
@@ -87,7 +87,7 @@ function HackathonCard({
           {hackathon.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-gray-300 font-mono"
+              className="text-xs px-2.5 py-1 rounded-xl bg-white/[0.04] border border-white/[0.08] text-gray-300 font-mono"
             >
               {tag}
             </span>
@@ -143,7 +143,7 @@ export default function HackathonsSection() {
       <div
         className="absolute top-1/3 left-0 w-96 h-96 rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(123,110,246,0.04) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(200,86,53,0.04) 0%, transparent 70%)",
           transform: "translate(-30%, -30%)",
         }}
       />
@@ -159,14 +159,14 @@ export default function HackathonsSection() {
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-300 to-gray-800">
                 Hackathon{" "}
               </span>
-              <span className="font-light italic text-gray-300 font-serif lowercase">
+              <span className="font-light italic text-[#c85635] font-serif lowercase">
                 battles
               </span>
             </h2>
           </div>
 
           <p className="text-gray-400 text-sm md:text-base font-light max-w-sm md:text-right">
-            Competing and prototyping under strict time limits — turning novel ideas into verified code, AI agent systems, and national analytics pipelines.
+            Competing and prototyping under strict time limits, turning novel ideas into verified code, AI agent systems, and national analytics pipelines.
           </p>
         </div>
 

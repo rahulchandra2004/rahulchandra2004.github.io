@@ -162,7 +162,7 @@ export default function ScrollyCanvas() {
     <div ref={containerRef} className="relative" style={{ height: "120vh" }}>
       {/* Sticky viewport */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Canvas — fills full viewport */}
+        {/* Canvas: fills full viewport */}
         <canvas
           ref={canvasRef}
           className="absolute inset-0 object-cover"

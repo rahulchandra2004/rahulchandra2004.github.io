@@ -47,7 +47,7 @@ function ShelfCard({ item, isActive, rackLevel, onSelect }: ShelfCardProps) {
     >
       {/* Reel Pill Badge */}
       {videoPlaying && rackLevel === 0 && (
-        <span className="absolute -top-3 left-0 z-20 px-2 py-0.5 bg-[#ff5c3d] text-white text-[10px] font-bold tracking-widest uppercase">
+        <span className="absolute -top-3 left-0 z-20 px-2 py-0.5 bg-[#c85635] text-white text-[10px] font-bold tracking-widest uppercase rounded-sm">
           Reel
         </span>
       )}

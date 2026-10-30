@@ -14,7 +14,7 @@ export default function CredentialsSection() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(123,110,246,0.03) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(200,86,53,0.03) 0%, transparent 70%)",
         }}
       />
 
@@ -29,7 +29,7 @@ export default function CredentialsSection() {
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-300 to-gray-800">
                 Education &{" "}
               </span>
-              <span className="font-light italic text-gray-300 font-serif lowercase">
+              <span className="font-light italic text-[#c85635] font-serif lowercase">
                 credentials
               </span>
             </h2>
@@ -42,7 +42,7 @@ export default function CredentialsSection() {
 
         {/* ── Academic Background Cards ── */}
         <div className="mb-20">
-          <h3 className="text-xs uppercase tracking-[0.28em] text-[var(--accent)] font-semibold mb-6 flex items-center gap-3">
+          <h3 className="text-xs uppercase tracking-[0.28em] text-[#c85635] font-semibold mb-6 flex items-center gap-3">
             <span>Degrees & Academics</span>
             <span className="h-px flex-1 bg-white/10" />
           </h3>
@@ -56,7 +56,7 @@ export default function CredentialsSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -6 }}
-                className="rounded-2xl p-7 md:p-8 bg-white/[0.025] backdrop-blur-md border border-white/[0.08] hover:border-white/20 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.15)] group"
+                className="rounded-xl p-7 md:p-8 bg-white/[0.025] backdrop-blur-md border border-white/[0.08] hover:border-white/20 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.15)] group"
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.borderColor = `${edu.accent}40`;
                   (e.currentTarget as HTMLElement).style.boxShadow = `0 16px 50px ${edu.accent}10`;
@@ -70,7 +70,7 @@ export default function CredentialsSection() {
                   <div className="flex items-start gap-4">
                     {edu.icon === "degree" ? (
                       <span
-                        className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border border-white/10 shadow-lg"
+                        className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0 border border-white/10 shadow-lg"
                         style={{ background: `${edu.accent}18`, color: edu.accent }}
                       >
                         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -80,7 +80,7 @@ export default function CredentialsSection() {
                       </span>
                     ) : (
                       <span
-                        className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border border-white/10 shadow-lg"
+                        className="w-12 h-12 rounded-lg flex items-center justify-center shrink-0 border border-white/10 shadow-lg"
                         style={{ background: `${edu.accent}18`, color: edu.accent }}
                       >
                         <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -102,7 +102,7 @@ export default function CredentialsSection() {
                 </div>
 
                 <div className="mb-5">
-                  <span className="text-xs font-mono px-3 py-1 rounded-full bg-white/[0.05] border border-white/10 text-gray-400">
+                  <span className="text-xs font-mono px-3 py-1 rounded-xl bg-white/[0.05] border border-white/10 text-gray-400">
                     {edu.period}
                   </span>
                 </div>
@@ -111,7 +111,7 @@ export default function CredentialsSection() {
                   {edu.details.map((d) => (
                     <span
                       key={d}
-                      className="text-xs px-2.5 py-1 rounded-full font-mono"
+                      className="text-xs px-2.5 py-1 rounded-xl font-mono"
                       style={{
                         background: `${edu.accent}12`,
                         border: `1px solid ${edu.accent}25`,

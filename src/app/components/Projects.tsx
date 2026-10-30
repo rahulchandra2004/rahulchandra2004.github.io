@@ -69,7 +69,7 @@ const projects = [
     title: "Gas Leakage Detection System",
     category: "IoT · Embedded Systems",
     description:
-      "Real-time gas leakage detection system using C++, Arduino, and GSM module to trigger instant SMS alerts when dangerous gas levels are detected — a safety-critical IoT solution.",
+      "Real-time gas leakage detection system using C++, Arduino, and GSM module to trigger instant SMS alerts when dangerous gas levels are detected, a safety-critical IoT solution.",
     tags: ["C++", "Arduino", "GSM", "IoT", "Embedded Systems"],
     accent: "#f0c8a0",
     year: "2025",
@@ -234,7 +234,7 @@ export default function Projects() {
             </h2>
             <p className="max-w-sm text-sm leading-relaxed md:text-right md:pb-3"
               style={{ color: "rgba(255,255,255,0.35)" }}>
-              From bipedal robots to real-time emotion recognition — projects that push
+              From bipedal robots to real-time emotion recognition: projects that push
               the boundary of intelligent systems.
             </p>
           </div>

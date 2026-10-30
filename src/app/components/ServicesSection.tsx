@@ -106,7 +106,7 @@ export default function ServicesSection() {
                   <div>
                     <h4
                       className={`text-xs font-mono uppercase tracking-widest font-semibold mb-3 ${
-                        isLit ? "text-[#121212]/70" : "text-[#8ee0c6]"
+                        isLit ? "text-[#121212]/70" : "text-[#c85635]"
                       }`}
                     >
                       Core Capabilities
@@ -116,7 +116,7 @@ export default function ServicesSection() {
                         <li key={capIdx} className="flex items-center gap-2.5">
                           <span
                             className={`w-1.5 h-1.5 rounded-full ${
-                              isLit ? "bg-[#121212]" : "bg-[#8ee0c6]"
+                              isLit ? "bg-[#121212]" : "bg-[#c85635]"
                             }`}
                           />
                           <span>{cap}</span>
@@ -135,10 +135,10 @@ export default function ServicesSection() {
                       onClick={(e) => {
                         e.stopPropagation();
                       }}
-                      className={`px-6 py-2.5 rounded-full text-xs md:text-sm font-semibold inline-flex items-center gap-2 transition-all duration-300 ${
+                      className={`px-6 py-2.5 rounded-xl text-xs md:text-sm font-semibold inline-flex items-center gap-2 transition-all duration-300 ${
                         isLit
                           ? "bg-[#121212] text-white hover:bg-black"
-                          : "bg-[#8ee0c6] text-black hover:bg-[#7bcfb4]"
+                          : "bg-[#c85635] text-white hover:bg-[#b34a2c]"
                       }`}
                     >
                       <span>View Projects</span>

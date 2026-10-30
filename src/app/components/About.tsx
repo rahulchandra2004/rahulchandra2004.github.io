@@ -136,12 +136,12 @@ export default function About() {
             </p>
             <div className="flex flex-wrap gap-3">
               {[
-                { icon: "📍", text: "Ongole, Andhra Pradesh, India" },
-                { icon: "✉", text: "rahulpc1981@gmail.com" },
+                { label: "Location", text: "Ongole, Andhra Pradesh, India" },
+                { label: "Email", text: "rahulpc1981@gmail.com" },
               ].map((item) => (
-                <span key={item.text} className="flex items-center gap-2 text-xs px-3 py-2 rounded-full"
+                <span key={item.text} className="flex items-center gap-2 text-xs px-3 py-2 rounded-xl"
                   style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.5)" }}>
-                  <span>{item.icon}</span>
+                  <span className="font-mono text-gray-400">{item.label}:</span>
                   <span>{item.text}</span>
                 </span>
               ))}
@@ -149,9 +149,9 @@ export default function About() {
           </div>
           <div className="flex gap-4 md:flex-col">
             <a href="https://www.linkedin.com/in/rahul-chandra-padamuttam-6b5888330" target="_blank" rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full text-sm font-semibold text-center"
+              className="px-5 py-2.5 rounded-xl text-sm font-semibold text-center"
               style={{
-                background: "rgba(160,240,200,0.1)", border: "1px solid rgba(160,240,200,0.2)",
+                background: "rgba(200,86,53,0.1)", border: "1px solid rgba(200,86,53,0.3)",
                 color: "var(--accent)", transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "rgba(160,240,200,0.18)"; }}

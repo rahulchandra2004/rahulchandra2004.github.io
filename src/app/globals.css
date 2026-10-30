@@ -5,16 +5,15 @@
 @tailwind utilities;
 
 :root {
-  --accent: #8ee0c6;
-  --accent-hover: #7bcfb4;
-  --accent-contrast: #050505;
-  --accent-purple: #8c82f2;
-  --accent-gradient: linear-gradient(135deg, #8ee0c6 0%, #90b8f8 50%, #8c82f2 100%);
-  --accent-glow: rgba(142, 224, 198, 0.35);
-  --purple-glow: rgba(140, 130, 242, 0.35);
-  --surface-lit: rgba(142, 224, 198, 0.08);
-  --surface-lit-ink: #ffffff;
-  --surface-lit-ink-soft: #d1d5db;
+  --accent: #c85635;
+  --accent-hover: #b34a2c;
+  --accent-contrast: #ffffff;
+  --accent-stone: #cfc9bc;
+  --accent-gradient: linear-gradient(135deg, #c85635 0%, #cfc9bc 100%);
+  --accent-glow: rgba(200, 86, 53, 0.25);
+  --surface-lit: #cfc9bc;
+  --surface-lit-ink: #121212;
+  --surface-lit-ink-soft: #2d2d2d;
 }
 
 ::-webkit-scrollbar {

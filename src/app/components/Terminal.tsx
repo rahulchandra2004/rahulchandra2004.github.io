@@ -150,8 +150,8 @@ export default function Terminal() {
               {history.map((log, i) => (
                 <div key={i}>
                   <div className="flex gap-2 text-gray-300">
-                    <span className="text-green-400">➜</span>
-                    <span className="text-blue-400">~</span>
+                    <span className="text-[#c85635] font-mono">&gt;</span>
+                    <span className="text-gray-400">~</span>
                     <span>{log.command}</span>
                   </div>
                   <div className="mt-1 pl-4">{log.output}</div>
@@ -160,8 +160,8 @@ export default function Terminal() {
 
               {/* Input Line */}
               <form onSubmit={handleCommand} className="flex gap-2 text-gray-300 mt-2">
-                <span className="text-green-400">➜</span>
-                <span className="text-blue-400">~</span>
+                <span className="text-[#c85635] font-mono">&gt;</span>
+                <span className="text-gray-400">~</span>
                 <input
                   ref={inputRef}
                   type="text"

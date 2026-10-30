@@ -6,17 +6,17 @@ const education = [
   {
     degree: "B.Tech in Computer Engineering",
     institution: "National Institute of Advanced Manufacturing Technology (NIAMT), Ranchi",
-    period: "Jan 2024 – Apr 2028",
+    period: "Jan 2024 to Apr 2028",
     accent: "#a0f0c8",
-    icon: "🎓",
+    icon: "degree",
     details: ["Computer Engineering", "Robotics & Automation", "Machine Learning"],
   },
   {
     degree: "Higher Secondary Education",
     institution: "Central Academy Sr. Sec. School",
-    period: "Jun 2020 – May 2023",
-    accent: "#7b6ef6",
-    icon: "📚",
+    period: "Jun 2020 to May 2023",
+    accent: "#cfc9bc",
+    icon: "school",
     details: ["Science Stream", "Mathematics & Physics"],
   },
 ];
@@ -24,7 +24,7 @@ const education = [
 const certifications = [
   { name: "Gemini Certified University Student", org: "Google for Education", accent: "#a0f0c8", link: "https://www.credential.net/4a181fdd-d149-4031-8ae5-31b253325631" },
   { name: "Oracle Cloud Infrastructure Certified Foundations Associate", org: "Oracle", accent: "#f0d8a0", link: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=B6A1D0A5370B2EB9EB273914BCC136E13F9AB4858F128F572A303840CAFF7A60" },
-  { name: "Microsoft Elevate AICTE — Power BI, AI & ML, Azure", org: "Microsoft × AICTE", accent: "#7b6ef6" },
+  { name: "Microsoft Elevate AICTE: Power BI, AI & ML, Azure", org: "Microsoft × AICTE", accent: "#7b6ef6" },
   { name: "TCS iON Career Edge", org: "TCS", accent: "#7b6ef6" },
   { name: "Cybersecurity Job Simulation", org: "Deloitte", accent: "#f0a0c8" },
   { name: "AI Fundamentals", org: "Cisco & IBM", accent: "#f0d8a0" },
@@ -168,10 +168,12 @@ export default function Education() {
                 }}
               >
                 <div
-                  className="w-8 h-8 rounded-lg flex-shrink-0 flex items-center justify-center text-sm font-bold mt-0.5"
+                  className="w-8 h-8 rounded-sm flex-shrink-0 flex items-center justify-center text-sm font-bold mt-0.5"
                   style={{ background: `${cert.accent}18`, color: cert.accent }}
                 >
-                  ✓
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
                 </div>
                 <div>
                   <p className="font-semibold text-white text-sm leading-snug mb-1">{cert.name}</p>
@@ -190,7 +192,7 @@ export default function Education() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mt-28 text-center"
         >
-          <p className="text-xs uppercase tracking-[0.4em] mb-6 font-medium" style={{ color: "var(--violet)" }}>
+          <p className="text-xs uppercase tracking-[0.4em] mb-6 font-medium text-[#c85635]">
             Let&apos;s connect
           </p>
           <h2 className="font-bold tracking-tight mb-10"
@@ -204,15 +206,9 @@ export default function Education() {
               href="mailto:rahulpc1981@gmail.com"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 rounded-full font-semibold text-sm tracking-wide inline-flex items-center gap-2"
-              style={{
-                background: "linear-gradient(135deg, #a0f0c8 0%, #7b6ef6 100%)",
-                color: "#0c0c0e",
-                boxShadow: "0 0 40px rgba(160,240,200,0.2)",
-              }}
+              className="px-8 py-4 rounded-xl font-semibold text-sm tracking-wide inline-flex items-center gap-2 bg-[#c85635] text-white shadow-[0_0_40px_rgba(200,86,53,0.2)]"
             >
               <span>rahulpc1981@gmail.com</span>
-              <span>✉</span>
             </motion.a>
             <motion.a
               href="https://www.linkedin.com/in/rahul-chandra-padamuttam-6b5888330"
@@ -220,7 +216,7 @@ export default function Education() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
-              className="px-8 py-4 rounded-full font-medium text-sm tracking-wide inline-flex items-center gap-2"
+              className="px-8 py-4 rounded-xl font-medium text-sm tracking-wide inline-flex items-center gap-2"
               style={{
                 background: "rgba(255,255,255,0.04)",
                 border: "1px solid rgba(255,255,255,0.1)",

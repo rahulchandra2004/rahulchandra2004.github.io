@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Rahul Chandra — Software Engineer · AI & Cloud Developer",
+  title: "Rahul Chandra | Software Engineer · AI & Cloud Developer",
   description:
     "Portfolio of Rahul Chandra Padamuttam. Software Engineer & AI/Cloud Developer. Certified in Oracle Cloud Infrastructure (OCI) and Google Gemini.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Rahul Chandra Padamuttam" }],
   openGraph: {
-    title: "Rahul Chandra — Software Engineer · AI & Cloud Developer",
+    title: "Rahul Chandra | Software Engineer · AI & Cloud Developer",
     description: "Building production full-stack systems, deep learning pipelines, and cloud architectures end to end.",
     type: "website",
   },
